@@ -9,23 +9,27 @@ A member of the wealthy South African Musk family, Elon was born in Pretoria and
 """
 
 if __name__ == "__main__":
-    # print("Hello LangChain")
-    #
-    # summary_template = """
-    #     given the information {information} about a person from I want you to create:
-    #     1. a short summary
-    #     2. two interesting facts about them
-    # """
-    #
+
+    print("Hello LangChain")
+
+    summary_template = """
+        given the information {information} about a person from I want you to create:
+        1. a short summary
+        2. two interesting facts about them
+    """
+
     # summary_prompt_template = PromptTemplate(
     #     input_variables=["information"], template=summary_template
     # )
-    #
-    # llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
-    #
-    # chain = LLMChain(llm=llm, prompt=summary_prompt_template)
-    #
-    # print(chain.run(information=information))
 
-    data = linkedin.scrap_linkedin_profile(linkedin_profile_url="https://gist.githubusercontent.com/rams1987/cc2ab893fb048dde8924152a24c47bb2/raw/cf5cfb92decfc487b5850a58793755f8a727f247/linkedin-profile.json")
-    print(data)
+    linkedin_data = linkedin.scrap_linkedin_profile(
+        linkedin_profile_url="https://gist.githubusercontent.com/rams1987/cc2ab893fb048dde8924152a24c47bb2/raw/cf5cfb92decfc487b5850a58793755f8a727f247/linkedin-profile.json")
+
+    summary_prompt_template = PromptTemplate(input_variables=["information"], template=summary_template)
+
+    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-1106")
+
+    chain = LLMChain(llm=llm, prompt=summary_prompt_template)
+
+    print(chain.run(information=linkedin_data))
+
