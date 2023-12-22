@@ -11,7 +11,7 @@ A member of the wealthy South African Musk family, Elon was born in Pretoria and
 
 if __name__ == "__main__":
 
-    print("Hello LangChain")
+    print("Twitter Application")
 
     linkedin_profile_url = linkedin_lookup_agent(name="Eden Marco")
 
