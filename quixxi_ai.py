@@ -13,7 +13,7 @@ summary_template = """
            3. Sample code to fix the problem if any
            4. Get the CVSS score
            5. find the issue in the given {input_code} 
-           6. where to insert the fix/code in the given {input_code}
+           6. where to insert the fix/code in the given {input_code}.
        """
 
 summary_prompt_template = PromptTemplate(
